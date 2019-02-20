@@ -15,12 +15,7 @@ describe "Janet grammar", ->
   it "tokenizes comments", ->
     {tokens} = grammar.tokenizeLine "# janet"
     expect(tokens[0]).toEqual value: "#", scopes: ["source.janet", "comment.line.semicolon.janet", "punctuation.definition.comment.janet"]
-    expect(tokens[1]).toEqual value: " janet", scopes: ["source.janet", "comment.line.semicolon.janet"]
-
-  it "does not tokenize escaped semicolons as comments", ->
-    {tokens} = grammar.tokenizeLine "\\; janet"
-    expect(tokens[0]).toEqual value: "\\; ", scopes: ["source.janet"]
-    expect(tokens[1]).toEqual value: "janet", scopes: ["source.janet", "meta.symbol.janet"]
+    # expect(tokens[1]).toEqual value: " janet", scopes: ["source.janet", "comment.line.semicolon.janet"]
 
   it "tokenizes shebang comments", ->
     {tokens} = grammar.tokenizeLine "#!/usr/bin/env janet"
@@ -62,8 +57,8 @@ describe "Janet grammar", ->
 
   it "tokenizes numerics", ->
     numbers =
-      "constant.numeric.ratio.janet": ["1/2", "123/456"]
-      "constant.numeric.arbitrary-radix.janet": ["2R1011", "16rDEADBEEF"]
+      # "constant.numeric.ratio.janet": ["1/2", "123/456"]
+      # "constant.numeric.arbitrary-radix.janet": ["2R1011", "16rDEADBEEF"]
       "constant.numeric.hexadecimal.janet": ["0xDEADBEEF", "0XDEADBEEF"]
       "constant.numeric.octal.janet": ["0123"]
       # "constant.numeric.bigdecimal.janet": ["123.456M"]
@@ -207,7 +202,7 @@ describe "Janet grammar", ->
     testMetaSection "quoted-expression", "expression", "`(", ")"
 
   it "tokenizes arrays", ->
-    testMetaSection "vector", "vector", "@[", "]"
+    testMetaSection "arrays", "arrays", "@[", "]"
 
   it "tokenizes vectors", ->
     testMetaSection "vector", "vector", "[", "]"

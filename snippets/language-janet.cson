@@ -81,10 +81,6 @@
     'prefix': 'map'
     'body': '(map $1 $2)'
 
-  'map lambda':
-    'prefix': 'mapl'
-    'body': '(map #($1) $2)'
-
   'cond':
     'prefix': 'cond'
     'body': """
