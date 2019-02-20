@@ -136,7 +136,7 @@
         'name': 'storage.control.janet'
       }
       {
-        'match': '(?<=(\\s|\\(|\\[|\\{))(import|require|(def[a-z\\-]*)|(var[a-z\\-]*))(?=(\\s|\\)|\\]|\\}))'
+        'match': '(?<=(\\s|\\(|\\[|\\{))(import|require|(def[a-z\\-]*)|(var[a-z]*)?)(?=(\\s|\\)|\\]|\\}))'
         'name': 'keyword.control.janet'
       }
     ]
