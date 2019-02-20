@@ -213,21 +213,21 @@
         'include': '$self'
       }
     ]
-  'regexp':
-    'begin': '#"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.regexp.begin.janet'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.regexp.end.janet'
-    'name': 'string.regexp.janet'
-    'patterns': [
-      {
-        'include': '#regexp_escaped_char'
-      }
-    ]
+  # 'regexp':
+  #   'begin': '#"'
+  #   'beginCaptures':
+  #     '0':
+  #       'name': 'punctuation.definition.regexp.begin.janet'
+  #   'end': '"'
+  #   'endCaptures':
+  #     '0':
+  #       'name': 'punctuation.definition.regexp.end.janet'
+  #   'name': 'string.regexp.janet'
+  #   'patterns': [
+  #     {
+  #       'include': '#regexp_escaped_char'
+  #     }
+  #   ]
   'regexp_escaped_char':
     'match': '\\\\.'
     'name': 'constant.character.escape.janet'

@@ -100,21 +100,21 @@ describe "Janet grammar", ->
     expect(tokens[5]).toEqual value: ":bar", scopes: ["source.janet", "meta.expression.janet", "meta.definition.global.janet", "constant.keyword.janet"]
 
   it "tokenizes keyfns (keyword control)", ->
-    keyfns = ["import", "require", "def", "def-", "defglobal", "defn", "defn-", "defmacro", "defmacro-", "var", "varglobal"]
+    keyfns = ["import", "require", "def", "def-", "defglobal", "var", "varglobal", "defn", "defn-", "defmacro", "defmacro-"]
 
     for keyfn in keyfns
       {tokens} = grammar.tokenizeLine "(#{keyfn})"
       expect(tokens[1]).toEqual value: keyfn, scopes: ["source.janet", "meta.expression.janet", "keyword.control.janet"]
 
   it "tokenizes keyfns (storage control)", ->
-    keyfns = ["if", "when", "for", "cond", "do", "let", "binding", "loop", "fn", "throw", "try", "catch", "for", "while"]
+    keyfns = ["if", "when", "for", "cond", "do", "let", "set", "binding", "loop", "fn", "throw", "try", "catch", "for", "while"]
 
     for keyfn in keyfns
       {tokens} = grammar.tokenizeLine "(#{keyfn})"
       expect(tokens[1]).toEqual value: keyfn, scopes: ["source.janet", "meta.expression.janet", "storage.control.janet"]
 
   it "tokenizes global definitions", ->
-    macros = ["def", "defn", "defn-", "var"]
+    macros = ["def", "defn", "defn-", "var", "do", "quote", "if", "splice", "while", "set", "quasiquote", "unquote"]
 
     for macro in macros
       {tokens} = grammar.tokenizeLine "(#{macro} foo 'bar)"
@@ -122,7 +122,7 @@ describe "Janet grammar", ->
       expect(tokens[3]).toEqual value: "foo", scopes: ["source.janet", "meta.expression.janet", "meta.definition.global.janet", "entity.global.janet"]
 
   it "tokenizes dynamic variables", ->
-    mutables = ["*ns*", "*foo-bar*"]
+    mutables = ["@ns", "@foo-bar"]
 
     for mutable in mutables
       {tokens} = grammar.tokenizeLine mutable
@@ -209,6 +209,9 @@ describe "Janet grammar", ->
 
   it "tokenizes maps", ->
     testMetaSection "map", "map", "@{", "}"
+
+  it "tokenizes structs", ->
+    testMetaSection "struct", "struct", "{", "}"
 
   it "tokenizes buffer", ->
     testMetaSection "buffer", "buffer", "@\"", "\""
