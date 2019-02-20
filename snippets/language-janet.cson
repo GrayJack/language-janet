@@ -1,0 +1,106 @@
+'.source.janet':
+  'def':
+    'prefix': 'def'
+    'body': '(def ${1:symbol} ${2:value})'
+
+  'defn':
+    'prefix': 'defn'
+    'body': """
+      (defn ${1:name}
+        [${2:params}]
+        ${3:body})
+    """
+
+  'fn':
+    'prefix': 'fn'
+    'body': """
+      (fn [${1:params}]
+        ${2:body})$0
+    """
+
+  'var':
+    'prefic': 'var'
+    'body': """
+      (var ${1:symbol} ${2:value})
+    """
+
+
+  'let':
+    'prefix': 'let'
+    'body': """
+      (let [${1:bindings}]
+        ${2:body})
+    """
+
+  'if':
+    'prefix': 'if'
+    'body': """
+      (if ${1:test}
+        ${2:then}
+        ${3:else})
+    """
+
+  'if-let':
+    'prefix': 'ifl'
+    'body': """
+      (if-let [${1:bindings}]
+        ${2:then}
+        ${3:else})
+    """
+
+  'if-not':
+    'prefix': 'ifn'
+    'body': """
+      (if-not ${1:test}
+        ${2:then}
+        ${3:else})
+    """
+
+  'when':
+    'prefix': 'when'
+    'body': """
+      (when ${1:test}
+        ${2:body})
+    """
+
+  'when-let':
+    'prefix': 'whenl'
+    'body': """
+      (when-let [${1:bindings}]
+        ${2:body})
+    """
+
+  'when-not':
+    'prefix': 'whenn'
+    'body': """
+      (when-not ${1:test}
+        ${2:body})
+    """
+
+  'map':
+    'prefix': 'map'
+    'body': '(map $1 $2)'
+
+  'map lambda':
+    'prefix': 'mapl'
+    'body': '(map #($1) $2)'
+
+  'cond':
+    'prefix': 'cond'
+    'body': """
+    (cond ${1:pred} ${2:expr}
+      $0)
+    """
+
+  'try':
+    'prefix': 'try'
+    'body': """
+      (try
+        $1
+      (catch ${2:exception} e
+        $3))
+    """
+
+  'print':
+    'prefix': 'print'
+    'body': '(print $1)'

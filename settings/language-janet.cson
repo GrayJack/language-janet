@@ -1,0 +1,5 @@
+'.source.janet':
+  'editor':
+    'commentStart': '# '
+  'autocomplete':
+    'extraWordCharacters': '-'

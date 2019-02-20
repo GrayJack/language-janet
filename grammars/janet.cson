@@ -1,0 +1,386 @@
+'scopeName': 'source.janet'
+'fileTypes': [
+  'janet'
+  'jimage'
+  'jt'
+]
+'foldingStartMarker': '\\(\\s*$'
+'foldingStopMarker': '^\\s*\\)'
+'firstLineMatch': '''(?x)
+  # Hashbang
+  ^\\#!.*(?:\\s|\\/)
+    boot
+  (?:$|\\s)
+  |
+  # Modeline
+  (?i:
+    # Vim
+    (?:(?:\\s|^)vi(?:m[<=>]?\\d+|m)?|\\sex)(?=:(?=\\s*set?\\s[^\\n:]+:)|:(?!\\s*set?\\s))(?:(?:\\s|\\s*:\\s*)\\w*(?:\\s*=(?:[^\\n\\\\\\s]|\\\\.)*)?)*[\\s:](?:filetype|ft|syntax)\\s*=
+      janet
+    (?=\\s|:|$)
+  )
+'''
+'name': 'Janet'
+'patterns': [
+  {
+    'include': '#comment'
+  }
+  {
+    'include': '#shebang-comment'
+  }
+  {
+    'include': '#quoted-sexp'
+  }
+  {
+    'include': '#sexp'
+  }
+  {
+    'include': '#keyfn'
+  }
+  {
+    'include': '#string'
+  }
+  {
+    'include': '#vector'
+  }
+  {
+    'include': '#set'
+  }
+  {
+    'include': '#map'
+  }
+  {
+    'include': '#regexp'
+  }
+  {
+    'include': '#var'
+  }
+  {
+    'include': '#constants'
+  }
+  {
+    'include': '#dynamic-variables'
+  }
+  {
+    'include': '#metadata'
+  }
+  {
+    'include': '#namespace-symbol'
+  }
+  {
+    'include': '#symbol'
+  }
+]
+'repository':
+  'comment':
+    # NOTE: This must be kept as a begin/end match for language-todo to work
+    'begin': '(?<!\\\\);'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.janet'
+    'end': '$'
+    'name': 'comment.line.semicolon.janet'
+  'constants':
+    'patterns': [
+      {
+        'match': '(nil)(?=(\\s|\\)|\\]|\\}))'
+        'name': 'constant.language.nil.janet'
+      }
+      {
+        'match': '(true|false)'
+        'name': 'constant.language.boolean.janet'
+      }
+      {
+        'match': '(-?\\d+/\\d+)'
+        'name': 'constant.numeric.ratio.janet'
+      }
+      {
+        'match': '(-?\\d+[rR][0-9a-zA-Z]+)'
+        'name': 'constant.numeric.arbitrary-radix.janet'
+      }
+      {
+        'match': '(-?0[xX][0-9a-fA-F]+)'
+        'name': 'constant.numeric.hexadecimal.janet'
+      }
+      {
+        'match': '(-?0\\d+)'
+        'name': 'constant.numeric.octal.janet'
+      }
+      {
+        'match': '(-?\\d+\\.\\d+([eE][+-]?\\d+)?M)'
+        'name': 'constant.numeric.bigdecimal.janet'
+      }
+      {
+        'match': '(-?\\d+\\.\\d+([eE][+-]?\\d+)?)'
+        'name': 'constant.numeric.double.janet'
+      }
+      {
+        'match': '(-?\\d+N)'
+        'name': 'constant.numeric.bigint.janet'
+      }
+      {
+        'match': '(-?\\d+)'
+        'name': 'constant.numeric.long.janet'
+      }
+      { # separating the pattern for reuse
+        'include': '#keyword'
+      }
+    ]
+  'keyword':
+    'match': '(?<=(\\s|\\(|\\[|\\{)):[a-zA-Z0-9\\#\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}|\\,))'
+    'name': 'constant.keyword.janet'
+  'keyfn':
+    'patterns': [
+      {
+        'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|cond|do|let(-[-a-z\\?]*)?|binding|loop|recur|fn|throw[a-z\\-]*|try|catch|finally|([a-z]*case))(?=(\\s|\\)|\\]|\\}))'
+        'name': 'storage.control.janet'
+      }
+      {
+        'match': '(?<=(\\s|\\(|\\[|\\{))(declare-?|(in-)?ns|import|use|require|load|compile|(def[a-z\\-]*))(?=(\\s|\\)|\\]|\\}))'
+        'name': 'keyword.control.janet'
+      }
+    ]
+  'dynamic-variables':
+    'match': '\\*[\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\d]+\\*'
+    'name': 'meta.symbol.dynamic.janet'
+  'map':
+    'begin': '(\\{)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.map.begin.janet'
+    'end': '(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.map.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.map.end.janet'
+    'name': 'meta.map.janet'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'metadata':
+    'patterns': [
+      {
+        'begin': '(\\^\\{)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.section.metadata.map.begin.janet'
+        'end': '(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.section.metadata.map.end.trailing.janet'
+          '2':
+            'name': 'punctuation.section.metadata.map.end.janet'
+        'name': 'meta.metadata.map.janet'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'begin': '(\\^)'
+        'end': '(\\s)'
+        'name': 'meta.metadata.simple.janet'
+        'patterns': [
+          {
+            'include': '#keyword'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  'quoted-sexp':
+    'begin': '([\'``]\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.expression.begin.janet'
+    'end': '(\\))$|(\\)(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.expression.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.expression.end.trailing.janet'
+      '3':
+        'name': 'punctuation.section.expression.end.janet'
+    'name': 'meta.quoted-expression.janet'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'regexp':
+    'begin': '#"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.regexp.begin.janet'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.regexp.end.janet'
+    'name': 'string.regexp.janet'
+    'patterns': [
+      {
+        'include': '#regexp_escaped_char'
+      }
+    ]
+  'regexp_escaped_char':
+    'match': '\\\\.'
+    'name': 'constant.character.escape.janet'
+  'set':
+    'begin': '(\\#\\{)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.set.begin.janet'
+    'end': '(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.set.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.set.end.janet'
+    'name': 'meta.set.janet'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'sexp':
+    'begin': '(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.expression.begin.janet'
+    'end': '(\\))$|(\\)(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\))'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.expression.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.expression.end.trailing.janet'
+      '3':
+        'name': 'punctuation.section.expression.end.janet'
+    'name': 'meta.expression.janet'
+    'patterns': [
+      {
+        # ns, declare and everything that starts with def* or namespace/def*
+        'begin': '(?<=\\()(ns|declare|def[\\w\\d._:+=><!?*-]*|[\\w._:+=><!?*-][\\w\\d._:+=><!?*-]*/def[\\w\\d._:+=><!?*-]*)\\s+'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.control.janet'
+        'end': '(?=\\))'
+        'name': 'meta.definition.global.janet'
+        'patterns': [
+          {
+            # there may be some metadata before an actual definition
+            'include': '#metadata'
+          }
+          { # dynamic variables are rendered diferently
+            'include': '#dynamic-variables'
+          }
+          {
+            # recognizing a symbol as being defined here
+            # copied and pasted from #symbol, screw it
+            'match': '([a-zA-Z\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)'
+            'name': 'entity.global.janet'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'include': '#keyfn'
+      }
+      {
+        'include': '#constants'
+      }
+      {
+        'include': '#vector'
+      }
+      {
+        'include': '#map'
+      }
+      {
+        'include': '#set'
+      }
+      {
+        'include': '#sexp'
+      }
+      {
+        'match': '(?<=\\()(.+?)(?=\\s|\\))'
+        'captures':
+          '1':
+            'name': 'entity.name.function.janet'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  'shebang-comment':
+    # NOTE: This must be kept as a begin/end match for language-todo to work
+    'begin': '^(#!)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.comment.shebang.janet'
+    'end': '$'
+    'name': 'comment.line.shebang.janet'
+  'string':
+    'begin': '(?<!\\\\)(")'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.string.begin.janet'
+    'end': '(")'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.string.end.janet'
+    'name': 'string.quoted.double.janet'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.janet'
+      }
+    ]
+  'namespace-symbol':
+    'patterns': [
+      { # copied from #symbol, plus a / at the end. Matches the "app/" part of
+        # "app/*config*"
+        'match': '([a-zA-Z\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)/'
+        'captures':
+          '1':
+            'name': 'meta.symbol.namespace.janet'
+      }
+    ]
+  'symbol':
+    'patterns': [
+      {
+        'match': '([a-zA-Z\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)'
+        'name': 'meta.symbol.janet'
+      }
+    ]
+  'var':
+    'match': '(?<=(\\s|\\(|\\[|\\{)\\#)\'[a-zA-Z0-9\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}))'
+    'name': 'meta.var.janet'
+  'vector':
+    'begin': '(\\[)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.vector.begin.janet'
+    'end': '(\\](?=[\\}\\]\\)\\s]*(?:;|$)))|(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.vector.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.vector.end.janet'
+    'name': 'meta.vector.janet'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
