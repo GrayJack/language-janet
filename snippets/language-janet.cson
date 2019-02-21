@@ -1,16 +1,58 @@
 '.source.janet':
+  # Library loading
+  'import':
+    'prefix': 'import'
+    'body': '(import ${1:path} ${2:args})'
+
+  'require':
+    'prefix': 'req'
+    'body': '(require ${1:path} ${2:args})'
+
+  # Variable bindings
   'def':
     'prefix': 'def'
     'body': '(def ${1:symbol} ${2:value})'
+
+  'def-':
+    'prefix': 'def-'
+    'body': '(def- ${1:symbol} ${2:value})'
+
+  'defglobal':
+    'prefix': 'defg'
+    'body': '(defglobal ${1:symbol} ${2:value})'
 
   'var':
     'prefix': 'var'
     'body': '(var ${1:symbol} ${2:value})'
 
+  'varglobal':
+    'prefix': 'varg'
+    'body': '(varglobal ${1:symbol} ${2:value})'
+
+  'set':
+    'prefix': 'set'
+    'body': '(set ${1:var} ${2:value})'
+
+  'let':
+    'prefix': 'let'
+    'body': """
+      (let [${1:bindings}]
+          ${2:body})
+    """
+
+  # Function bindings
   'defn':
     'prefix': 'defn'
     'body': """
       (defn ${1:name}
+        [${2:params}]
+        ${3:body})
+    """
+
+  'defn-':
+    'prefix': 'defn-'
+    'body': """
+      (defn- ${1:name}
         [${2:params}]
         ${3:body})
     """
@@ -22,17 +64,26 @@
         ${2:body})$0
     """
 
-  'let':
-    'prefix': 'let'
+  # Macro bindings
+  'macro':
+    'prefix': 'macro'
     'body': """
-      (let [${1:bindings}]
-          ${2:body})
+      (defmacro ${1:name}
+          ${2:more})
     """
 
+  'macro-':
+    'prefix': 'macro-'
+    'body': """
+      (defmacro- ${1:name}
+          ${2:more})
+    """
+
+  # Conditionals
   'if':
     'prefix': 'if'
     'body': """
-      (if ${1:test}
+      (if ${1:bool}
           ${2:then}
           ${3:else})
     """
@@ -48,7 +99,7 @@
   'if-not':
     'prefix': 'ifn'
     'body': """
-      (if-not ${1:test}
+      (if-not ${1:bool}
           ${2:then}
           ${3:else})
     """
@@ -56,7 +107,7 @@
   'when':
     'prefix': 'when'
     'body': """
-      (when ${1:test}
+      (when ${1:bool}
           ${2:body})
     """
 
@@ -70,13 +121,9 @@
   'when-not':
     'prefix': 'whenn'
     'body': """
-      (when-not ${1:test}
+      (when-not ${1:bool}
           ${2:body})
     """
-
-  'map':
-    'prefix': 'map'
-    'body': '(map $1 $2)'
 
   'cond':
     'prefix': 'cond'
@@ -85,14 +132,76 @@
           $0)
     """
 
+  # Functional paradigm functions
+  'filter':
+    'prefix': 'filter'
+    'body': '(filter ${1:bool} ${2:indexed})'
+
+  'some':
+    'prefix': 'some'
+    'body': '(some ${1:bool} ${2:indexed})'
+
+  'map':
+    'prefix': 'map'
+    'body': '(map ${1:function} ${2:indexed})'
+
+  'reduce':
+    'prefix': 'reduce'
+    'body': '(reduce ${1:function} ${2:init} ${3:indexed})'
+
+  'fold':
+    'prefix': 'fold'
+    'body': '(reduce ${1:function} ${2:init} ${3:indexed})'
+
+  # Iterator and Imperative Loops
+  'while':
+    'prefix': 'while'
+    'body': """
+      (while ${1:bool}
+          ${2:body})
+    """
+
+  'each':
+    'prefix': 'each'
+    'body': """
+      (each ${1:bind} ${2:indexed}
+          ${3:body})
+    """
+
+  'for':
+    'prefix': 'for'
+    'body': """
+      (for [${1:binding}] ${2:start} ${3:end}
+          ${4:body})
+    """
+
+  'loop':
+    'prefix': 'loop'
+    'body': """
+      (loop [${1:head}]
+          ${2:body})
+    """
+
   'try':
     'prefix': 'try'
     'body': """
       (try
           $1
-      (catch ${2:exception} e
+      (catch ${2:exception}
           $3))
     """
+
+  'slurp':
+    'prefix': 'slurp'
+    'body': '(slurp ${1:path})'
+
+  'length':
+    'prefix': 'len'
+    'body': '(length ${1:data_structure})'
+
+  'put':
+    'prefix': 'put'
+    'body': '(put ${1:data_structure} ${2:key} ${3:value})'
 
   'print':
     'prefix': 'print'

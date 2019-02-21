@@ -132,14 +132,11 @@
   'keyfn':
     'patterns': [
       {
-        # 'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|cond|do|let(-[-a-z\\?]*)?|binding|loop|recur|fn|throw[a-z\\-]*|try|catch|finally|([a-z]*case))(?=(\\s|\\)|\\]|\\}))'
-        # 'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|cond|do|let(-[-a-z\\?]*)?|set(-[-a-z\\?]*)?|binding|loop|fn|throw[a-z\\-]*|try|catch|while(-[-a-z\\?]*)?)(?=(\\s|\\)|\\]|\\}))'
         'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|while(-[-a-z\\?]*)?|cond|do|let(-[-a-z\\?]*)?|set(-[-a-z\\?]*)?|binding|loop|fn|throw[a-z\\-]*|try|catch)(?=(\\s|\\)|\\]|\\}))'
         'name': 'storage.control.janet'
       }
       {
         'match': '(?<=(\\s|\\(|\\[|\\{))(import|require|(var[a-z\\-]*)|(def[a-z\\-]*))(?=(\\s|\\)|\\]|\\}))'
-        # 'match': '(?<=(\\s|\\(|\\[|\\{))(import|require|(def[a-z\\-]*)|(var[a-z]*)?)(?=(\\s|\\)|\\]|\\}))'
         'name': 'keyword.control.janet'
       }
     ]
@@ -267,8 +264,8 @@
     'name': 'meta.expression.janet'
     'patterns': [
       {
-        # ns, declare and everything that starts with def* or namespace/def*
-        'begin': '(?<=\\()(ns|declare|def[\\w\\d._:+=><!?*-]*|[\\w._:+=><!?*-][\\w\\d._:+=><!?*-]*/def[\\w\\d._:+=><!?*-]*)\\s+'
+        # everything that starts with def* or namespace/def*
+        'begin': '(?<=\\()(def[\\w\\d._:+=><!?*-]*|[\\w._:+=><!?*-][\\w\\d._:+=><!?*-]*/def[\\w\\d._:+=><!?*-]*)\\s+'
         'beginCaptures':
           '1':
             'name': 'keyword.control.janet'
