@@ -1,6 +1,6 @@
 '.source.janet':
   # Shebang
-  'shebang'
+  'shebang':
     'prefix': 'shebang'
     'body': '#/env/bin janet'
 
