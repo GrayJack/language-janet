@@ -231,18 +231,52 @@
   # 'regexp_escaped_char':
   #   'match': '\\\\.'
   #   'name': 'constant.character.escape.janet'
-  'set':
-    'begin': '(\\#\\{)'
+  # 'set':
+  #   'begin': '(\\#\\{)'
+  #   'beginCaptures':
+  #     '1':
+  #       'name': 'punctuation.section.set.begin.janet'
+  #   'end': '(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})'
+  #   'endCaptures':
+  #     '1':
+  #       'name': 'punctuation.section.set.end.trailing.janet'
+  #     '2':
+  #       'name': 'punctuation.section.set.end.janet'
+  #   'name': 'meta.set.janet'
+  #   'patterns': [
+  #     {
+  #       'include': '$self'
+  #     }
+  #   ]
+  'array':
+    'begin': '(\\@\\[)'
     'beginCaptures':
       '1':
-        'name': 'punctuation.section.set.begin.janet'
+        'name': 'punctuation.section.array.begin.janet'
+    'end': '(\\](?=[\\]\\]\\)\\s]*(?:;|$)))|(\\])'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.array.end.trailing.janet'
+      '2':
+        'name': 'punctuation.section.array.end.janet'
+    'name': 'meta.array.janet'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'table':
+    'begin': '(\\@\\{)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.table.begin.janet'
     'end': '(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})'
     'endCaptures':
       '1':
-        'name': 'punctuation.section.set.end.trailing.janet'
+        'name': 'punctuation.section.table.end.trailing.janet'
       '2':
-        'name': 'punctuation.section.set.end.janet'
-    'name': 'meta.set.janet'
+        'name': 'punctuation.section.table.end.janet'
+    'name': 'meta.table.janet'
     'patterns': [
       {
         'include': '$self'
@@ -303,7 +337,10 @@
         'include': '#map'
       }
       {
-        'include': '#set'
+        'include': '#array'
+      }
+      {
+        'include': '#table'
       }
       {
         'include': '#sexp'

@@ -48,7 +48,7 @@
   #   expect(tokens[4]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.begin.janet']
   #   expect(tokens[5]).toEqual value: "/", scopes: ['source.janet', 'string.quoted.double.janet']
   #   expect(tokens[6]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.end.janet']
-
+  #
   # it "tokenizes escaped double quote in regexes", ->
   #   {tokens} = grammar.tokenizeLine '#"\\""'
   #   expect(tokens[0]).toEqual value: '#"', scopes: ["source.janet", "string.regexp.janet", "punctuation.definition.regexp.begin.janet"]
@@ -58,9 +58,9 @@
   it "tokenizes numerics", ->
     numbers =
       # "constant.numeric.ratio.janet": ["1/2", "123/456"]
-      # "constant.numeric.arbitrary-radix.janet": ["2R1011", "16rDEADBEEF"]
+      "constant.numeric.arbitrary-radix.janet": ["2R1011", "16rDEADBEEF"]
       "constant.numeric.hexadecimal.janet": ["0xDEADBEEF", "0XDEADBEEF"]
-      "constant.numeric.octal.janet": ["0123"]
+      # "constant.numeric.octal.janet": ["0123"]
       "constant.numeric.bigdecimal.janet": ["123.456M"]
       "constant.numeric.double.janet": ["123.45", "123.45e6", "123.45E6"]
       "constant.numeric.bigint.janet": ["123N"]
@@ -207,8 +207,8 @@
   it "tokenizes vectors", ->
     testMetaSection "vector", "vector", "[", "]"
 
-  it "tokenizes maps", ->
-    testMetaSection "map", "map", "@{", "}"
+  it "tokenizes tables", ->
+    testMetaSection "table", "table", "@{", "}"
 
   it "tokenizes structs", ->
     testMetaSection "struct", "struct", "{", "}"
