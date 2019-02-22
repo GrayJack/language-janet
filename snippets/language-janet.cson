@@ -218,6 +218,6 @@
     'prefix': 'print'
     'body': '(print $1)'
 
-  'pretty print':
+  'pretty-print':
     'prefix': 'pp'
     'body': '(pp $1)'

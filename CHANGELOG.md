@@ -1,5 +1,8 @@
 ## Unreleased
 
+## 1.1.1
+ * Fix a bug in the snippets
+
 ## 1.1.0
  * Added pretty print snippet
  * Added shebang snippet
