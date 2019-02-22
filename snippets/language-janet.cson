@@ -1,4 +1,9 @@
 '.source.janet':
+  # Shebang
+  'shebang'
+    'prefix': 'shebang'
+    'body': '#/env/bin janet'
+
   # Library loading
   'import':
     'prefix': 'import'
@@ -45,23 +50,23 @@
     'prefix': 'defn'
     'body': """
       (defn ${1:name}
-        [${2:params}]
-        ${3:body})
+          [${2:params}]
+          ${3:body})
     """
 
   'defn-':
     'prefix': 'defn-'
     'body': """
       (defn- ${1:name}
-        [${2:params}]
-        ${3:body})
+          [${2:params}]
+          ${3:body})
     """
 
   'fn':
     'prefix': 'fn'
     'body': """
       (fn [${1:params}]
-        ${2:body})$0
+          ${2:body})$0
     """
 
   # Macro bindings
@@ -69,14 +74,16 @@
     'prefix': 'macro'
     'body': """
       (defmacro ${1:name}
-          ${2:more})
+          [${2:params}]
+          ${3:more})
     """
 
   'macro-':
     'prefix': 'macro-'
     'body': """
       (defmacro- ${1:name}
-          ${2:more})
+          [${2:params}]
+          ${3:more})
     """
 
   # Conditionals
@@ -128,7 +135,8 @@
   'cond':
     'prefix': 'cond'
     'body': """
-      (cond ${1:pred} ${2:expr}
+      (cond
+          ${1:bool} ${2:expr}
           $0)
     """
 
@@ -187,14 +195,16 @@
     'body': """
       (try
           $1
-      (catch ${2:exception}
+      ([${2:exception}]
           $3))
     """
 
+  # File ops
   'slurp':
     'prefix': 'slurp'
     'body': '(slurp ${1:path})'
 
+  # Data structure functions
   'length':
     'prefix': 'len'
     'body': '(length ${1:data_structure})'
@@ -203,6 +213,11 @@
     'prefix': 'put'
     'body': '(put ${1:data_structure} ${2:key} ${3:value})'
 
+  # Prints
   'print':
     'prefix': 'print'
     'body': '(print $1)'
+
+  'pretty print':
+    'prefix': 'pp'
+    'body': '(pp $1)'

@@ -228,9 +228,9 @@
   #       'include': '#regexp_escaped_char'
   #     }
   #   ]
-  'regexp_escaped_char':
-    'match': '\\\\.'
-    'name': 'constant.character.escape.janet'
+  # 'regexp_escaped_char':
+  #   'match': '\\\\.'
+  #   'name': 'constant.character.escape.janet'
   'set':
     'begin': '(\\#\\{)'
     'beginCaptures':

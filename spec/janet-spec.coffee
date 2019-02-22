@@ -1,4 +1,4 @@
-describe "Janet grammar", ->
+# describe "Janet grammar", ->
   grammar = null
 
   beforeEach ->
@@ -40,14 +40,14 @@ describe "Janet grammar", ->
     expect(tokens[1]).toEqual value: 'foo', scopes: ["source.janet", "string.regexp.janet"]
     expect(tokens[2]).toEqual value: '"', scopes: ["source.janet", "string.regexp.janet", "punctuation.definition.regexp.end.janet"]
 
-  it "tokenizes backslash escape character in regexes", ->
-    {tokens} = grammar.tokenizeLine '"\\\\" "/"'
-    # expect(tokens[0]).toEqual value: '#"', scopes: ["source.janet", "string.regexp.janet", "punctuation.definition.regexp.begin.janet"]
-    # expect(tokens[1]).toEqual value: "\\\\", scopes: ['source.janet', 'string.regexp.janet', 'constant.character.escape.janet']
-    expect(tokens[2]).toEqual value: '"', scopes: ['source.janet', 'string.regexp.janet', "punctuation.definition.regexp.end.janet"]
-    expect(tokens[4]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.begin.janet']
-    expect(tokens[5]).toEqual value: "/", scopes: ['source.janet', 'string.quoted.double.janet']
-    expect(tokens[6]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.end.janet']
+  # it "tokenizes backslash escape character in regexes", ->
+  #   {tokens} = grammar.tokenizeLine '"\\\\" "/"'
+  #   expect(tokens[0]).toEqual value: '#"', scopes: ["source.janet", "string.regexp.janet", "punctuation.definition.regexp.begin.janet"]
+  #   expect(tokens[1]).toEqual value: "\\\\", scopes: ['source.janet', 'string.regexp.janet', 'constant.character.escape.janet']
+  #   expect(tokens[2]).toEqual value: '"', scopes: ['source.janet', 'string.regexp.janet', "punctuation.definition.regexp.end.janet"]
+  #   expect(tokens[4]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.begin.janet']
+  #   expect(tokens[5]).toEqual value: "/", scopes: ['source.janet', 'string.quoted.double.janet']
+  #   expect(tokens[6]).toEqual value: '"', scopes: ['source.janet', 'string.quoted.double.janet', 'punctuation.definition.string.end.janet']
 
   # it "tokenizes escaped double quote in regexes", ->
   #   {tokens} = grammar.tokenizeLine '#"\\""'
@@ -61,9 +61,9 @@ describe "Janet grammar", ->
       # "constant.numeric.arbitrary-radix.janet": ["2R1011", "16rDEADBEEF"]
       "constant.numeric.hexadecimal.janet": ["0xDEADBEEF", "0XDEADBEEF"]
       "constant.numeric.octal.janet": ["0123"]
-      # "constant.numeric.bigdecimal.janet": ["123.456M"]
+      "constant.numeric.bigdecimal.janet": ["123.456M"]
       "constant.numeric.double.janet": ["123.45", "123.45e6", "123.45E6"]
-      # "constant.numeric.bigint.janet": ["123N"]
+      "constant.numeric.bigint.janet": ["123N"]
       "constant.numeric.long.janet": ["123", "12321"]
 
     for scope, nums of numbers

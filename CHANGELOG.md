@@ -1,5 +1,8 @@
 ## Unreleased
+ * Added pretty print snippet
+ * Added shebang snippet
+ * Fix try snippet
 
-## 0.2.0 - First Proper Release
+## 1.0.0 - First Proper Release
  * Basic Janet highlight
  * Snippets for most used expressions/macros
