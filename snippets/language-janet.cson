@@ -132,6 +132,13 @@
           ${2:body})
     """
 
+  'unless':
+    'prefix': 'unless'
+    'body': """
+      (unless ${1:bool}
+          ${2:body})
+    """
+
   'cond':
     'prefix': 'cond'
     'body': """

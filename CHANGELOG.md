@@ -3,6 +3,7 @@
  * Added case snippet
  * Added match snippet
  * Added seq snippet
+ * Added unless snippet
 
 ## 1.1.2
  * Fix a bug in the snippets
