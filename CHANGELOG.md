@@ -1,6 +1,10 @@
 ## Unreleased
+ * Added generate snippet
+ * Added case snippet
+ * Added match snippet
+ * Added seq snippet
 
-## 1.1.1
+## 1.1.2
  * Fix a bug in the snippets
 
 ## 1.1.0

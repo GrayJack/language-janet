@@ -140,6 +140,22 @@
           $0)
     """
 
+  'case':
+    'prefix': 'case'
+    'body': """
+      (case ${1:dispatch}
+          ${2:bool} ${3:expr}
+          $0)
+    """
+
+  'match':
+    'prefix': 'match'
+    'body': """
+      (match ${1:x}
+          ${2:cases}
+          $0)
+    """
+
   # Functional paradigm functions
   'filter':
     'prefix': 'filter'
@@ -187,6 +203,20 @@
     'prefix': 'loop'
     'body': """
       (loop [${1:head}]
+          ${2:body})
+    """
+
+  'seq':
+    'prefix': 'seq'
+    'body': """
+      (seq [${1:head}]
+          ${2:body})
+    """
+
+  'generate':
+    'prefix': 'gen'
+    'body': """
+      (generate [${1:head}]
           ${2:body})
     """
 
