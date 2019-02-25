@@ -1,6 +1,6 @@
 {
   "name": "language-janet",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Janet language support in Atom",
   "engines": {
     "atom": "*",
