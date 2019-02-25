@@ -2,7 +2,7 @@
   # Shebang
   'shebang':
     'prefix': 'shebang'
-    'body': '#/env/bin janet'
+    'body': '#!/bin/env janet'
 
   # Library loading
   'import':
