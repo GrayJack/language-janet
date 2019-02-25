@@ -1,4 +1,6 @@
 ## Unreleased
+
+## 1.2.0
  * Added generate snippet
  * Added case snippet
  * Added match snippet
