@@ -107,7 +107,7 @@
       expect(tokens[1]).toEqual value: keyfn, scopes: ["source.janet", "meta.expression.janet", "keyword.control.janet"]
 
   it "tokenizes keyfns (storage control)", ->
-    keyfns = ["if", "when", "for", "cond", "do", "let", "set", "binding", "loop", "fn", "throw", "try", "catch", "for", "while", "break"]
+    keyfns = ["if", "when", "unless", "for", "cond", "do", "let", "set", "binding", "loop", "fn", "throw", "try", "catch", "for", "while", "break"]
 
     for keyfn in keyfns
       {tokens} = grammar.tokenizeLine "(#{keyfn})"

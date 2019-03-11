@@ -138,7 +138,7 @@
   'keyfn':
     'patterns': [
       {
-        'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|while(-[-a-z\\?]*)?|cond|do|let(-[-a-z\\?]*)?|set(-[-a-z\\?]*)?|binding|loop|fn|throw[a-z\\-]*|try|catch|break)(?=(\\s|\\)|\\]|\\}))'
+        'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|unless|for(-[-a-z]*)?|while(-[-a-z\\?]*)?|cond|do|let(-[-a-z\\?]*)?|set(-[-a-z\\?]*)?|binding|loop|fn|throw[a-z\\-]*|try|catch|break)(?=(\\s|\\)|\\]|\\}))'
         'name': 'storage.control.janet'
       }
       {

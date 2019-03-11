@@ -1,5 +1,6 @@
 ## Unreleased
  * Added break as special form
+ * Added unless highlight as "keyword" color since when if in it too
 
 ## 1.2.0
  * Added generate snippet
