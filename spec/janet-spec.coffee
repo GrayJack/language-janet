@@ -107,14 +107,14 @@
       expect(tokens[1]).toEqual value: keyfn, scopes: ["source.janet", "meta.expression.janet", "keyword.control.janet"]
 
   it "tokenizes keyfns (storage control)", ->
-    keyfns = ["if", "when", "for", "cond", "do", "let", "set", "binding", "loop", "fn", "throw", "try", "catch", "for", "while"]
+    keyfns = ["if", "when", "for", "cond", "do", "let", "set", "binding", "loop", "fn", "throw", "try", "catch", "for", "while", "break"]
 
     for keyfn in keyfns
       {tokens} = grammar.tokenizeLine "(#{keyfn})"
       expect(tokens[1]).toEqual value: keyfn, scopes: ["source.janet", "meta.expression.janet", "storage.control.janet"]
 
   it "tokenizes global definitions", ->
-    macros = ["def", "defn", "defn-", "var", "do", "quote", "if", "splice", "while", "set", "quasiquote", "unquote"]
+    macros = ["def", "defn", "defn-", "var", "do", "quote", "if", "splice", "while", "set", "quasiquote", "unquote", "break"]
 
     for macro in macros
       {tokens} = grammar.tokenizeLine "(#{macro} foo 'bar)"

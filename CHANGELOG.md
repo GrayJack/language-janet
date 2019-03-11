@@ -1,4 +1,5 @@
 ## Unreleased
+ * Added break as special form
 
 ## 1.2.0
  * Added generate snippet
