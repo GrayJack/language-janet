@@ -42,7 +42,7 @@
     'prefix': 'let'
     'body': """
       (let [${1:bindings}]
-          ${2:body})
+      \t${2:body})
     """
 
   # Function bindings
@@ -50,23 +50,23 @@
     'prefix': 'defn'
     'body': """
       (defn ${1:name}
-          [${2:params}]
-          ${3:body})
+      \t[${2:params}]
+      \t${3:body})
     """
 
   'defn-':
     'prefix': 'defn-'
     'body': """
       (defn- ${1:name}
-          [${2:params}]
-          ${3:body})
+      \t[${2:params}]
+      \t${3:body})
     """
 
   'fn':
     'prefix': 'fn'
     'body': """
       (fn [${1:params}]
-          ${2:body})$0
+      \t${2:body})$0
     """
 
   # Macro bindings
@@ -74,16 +74,16 @@
     'prefix': 'macro'
     'body': """
       (defmacro ${1:name}
-          [${2:params}]
-          ${3:more})
+      \t[${2:params}]
+      \t${3:more})
     """
 
   'macro-':
     'prefix': 'macro-'
     'body': """
       (defmacro- ${1:name}
-          [${2:params}]
-          ${3:more})
+      \t[${2:params}]
+      \t${3:more})
     """
 
   # Conditionals
@@ -91,76 +91,76 @@
     'prefix': 'if'
     'body': """
       (if ${1:bool}
-          ${2:then}
-          ${3:else})
+      \t${2:then}
+      \t${3:else})
     """
 
   'if-let':
     'prefix': 'ifl'
     'body': """
       (if-let [${1:bindings}]
-          ${2:then}
-          ${3:else})
+      \t${2:then}
+      \t${3:else})
     """
 
   'if-not':
     'prefix': 'ifn'
     'body': """
       (if-not ${1:bool}
-          ${2:then}
-          ${3:else})
+      \t${2:then}
+      \t${3:else})
     """
 
   'when':
     'prefix': 'when'
     'body': """
       (when ${1:bool}
-          ${2:body})
+      \t${2:body})
     """
 
   'when-let':
     'prefix': 'whenl'
     'body': """
       (when-let [${1:bindings}]
-          ${2:body})
+      \t${2:body})
     """
 
   'when-not':
     'prefix': 'whenn'
     'body': """
       (when-not ${1:bool}
-          ${2:body})
+      \t${2:body})
     """
 
   'unless':
     'prefix': 'unless'
     'body': """
       (unless ${1:bool}
-          ${2:body})
+      \t${2:body})
     """
 
   'cond':
     'prefix': 'cond'
     'body': """
       (cond
-          ${1:bool} ${2:expr}
-          $0)
+      \t${1:bool} ${2:expr}
+      \t$0)
     """
 
   'case':
     'prefix': 'case'
     'body': """
       (case ${1:dispatch}
-          ${2:bool} ${3:expr}
-          $0)
+      \t${2:bool} ${3:expr}
+      \t$0)
     """
 
   'match':
     'prefix': 'match'
     'body': """
       (match ${1:x}
-          ${2:cases}
-          $0)
+      \t${2:cases}
+      \t$0)
     """
 
   # Functional paradigm functions
@@ -189,51 +189,51 @@
     'prefix': 'while'
     'body': """
       (while ${1:bool}
-          ${2:body})
+      \t${2:body})
     """
 
   'each':
     'prefix': 'each'
     'body': """
       (each ${1:bind} ${2:indexed}
-          ${3:body})
+      \t${3:body})
     """
 
   'for':
     'prefix': 'for'
     'body': """
       (for [${1:binding}] ${2:start} ${3:end}
-          ${4:body})
+      \t${4:body})
     """
 
   'loop':
     'prefix': 'loop'
     'body': """
       (loop [${1:head}]
-          ${2:body})
+      \t${2:body})
     """
 
   'seq':
     'prefix': 'seq'
     'body': """
       (seq [${1:head}]
-          ${2:body})
+      \t${2:body})
     """
 
   'generate':
     'prefix': 'gen'
     'body': """
       (generate [${1:head}]
-          ${2:body})
+      \t${2:body})
     """
 
   'try':
     'prefix': 'try'
     'body': """
       (try
-          $1
+      \t$1
       ([${2:exception}]
-          $3))
+      \t$3))
     """
 
   # File ops
