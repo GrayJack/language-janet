@@ -60,6 +60,9 @@ repository:
                 include: "#keysym"
             }
             {
+                include: "#function-call"
+            }
+            {
                 include: "#symbol"
             }
         ]
@@ -130,22 +133,20 @@ repository:
         match: "(?<=(\\s|\\(|\\[|\\{))(splice|\\*doc\\-width\\*|\\*env\\*|abstract\\?|\\->|\\->>|\\-\\?>|\\-\\?>>|all|all\\-bindings|allsyms|and|apply|array|array/concat|array/ensure|array/insert|array/new|array/peek|array/pop|array/push|array/remove|array/slice|array\\?|as\\->|as\\?\\->|bad\\-compile|bad\\-parse|band|blshift|bnot|boolean\\?|bor|brshift|brushift|buffer|buffer/bit|buffer/bit\\-clear|buffer/bit\\-set|buffer/bit\\-toggle|buffer/blit|buffer/clear|buffer/format|buffer/new|buffer/new\\-filled|buffer/popn|buffer/push\\-byte|buffer/push\\-string|buffer/push\\-word|buffer/slice|buffer\\?|bxor|bytes\\?|case|cfunction\\?|comment|comp|compile|complement|cond|coro|count|debug|debug/arg\\-stack|debug/break|debug/fbreak|debug/lineage|debug/stack|debug/stacktrace|debug/unbreak|debug/unfbreak|deep\\-not=|deep=|default|describe|dictionary\\?|disasm|distinct|doc|doc\\*|doc\\-format|drop\\-until|drop\\-while|empty\\?|env\\-lookup|error|eval|eval\\-string|even\\?|every\\?|extreme|false\\?|fiber/current|fiber/maxstack|fiber/new|fiber/setmaxstack|fiber/status|fiber\\?|file/close|file/flush|file/open|file/popen|file/read|file/seek|file/write|filter|find|find\\-index|first|flatten|flatten\\-into|for|frequencies|function\\?|gccollect|gcinterval|gcsetinterval|generate|gensym|get|getline|grammar\\-template|hash|idempotent\\?|identity|if\\-let|if\\-not|import|import\\*|indexed\\?|int/s64|int/u64|interleave|interpose|invert|janet/build|janet/version|juxt|juxt\\*|keep|keys|keyword|keyword\\?|kvs|last|length|load\\-image|macex|macex1|make\\-env|make\\-image|map|mapcat|marshal|match|math/abs|math/acos|math/asin|math/atan|math/atan2|math/ceil|math/cos|math/cosh|math/e|math/exp|math/floor|math/inf|math/log|math/log10|math/pi|math/pow|math/random|math/seedrandom|math/sin|math/sinh|math/sqrt|math/tan|math/tanh|max|max\\-order|merge|merge\\-into|meta|min|min\\-order|module/\\*syspath\\*|module/cache|module/find|module/loading|module/paths|native|neg\\?|next|nil\\?|not|not=|not==|number\\?|odd\\?|one\\?|or|order<|order<=|order>|order>=|os/cd|os/clock|os/cwd|os/date|os/dir|os/execute|os/exit|os/getenv|os/link|os/mkdir|os/rm|os/rmdir|os/setenv|os/shell|os/sleep|os/stat|os/time|os/touch|os/which|pairs|parser/byte|parser/consume|parser/eof|parser/error|parser/flush|parser/has\\-more|parser/insert|parser/new|parser/produce|parser/state|parser/status|parser/where|partial|partition|peg/compile|peg/pos\\?|postwalk|pp|prewalk|print|process/args|product|put|range|reduce|repl|require|resume|reverse|run\\-context|scan\\-number|seq|slurp|some|sort|sorted|specials|spit|stderr|stdin|stdout|string|string/ascii\\-lower|string/ascii\\-upper|string/bytes|string/check\\-set|string/find|string/find\\-all|string/format|string/from\\-bytes|string/join|string/repeat|string/replace|string/replace\\-all|string/reverse|string/slice|string/split|string\\?|struct\\?|sum|symbol|symbol\\?|table|table/getproto|table/new|table/rawget|table/setproto|table/to\\-struct|table\\?|take\\-until|take\\-while|tarray/buffer|tarray/copy\\-bytes|tarray/length|tarray/new|tarray/properties|tarray/slice|tarray/swap\\-bytes|true\\?|tuple|tuple/brackets|tuple/slice|tuple/type|tuple\\?|type|unmarshal|update|values|walk|with\\-syms|zero\\?|zipcoll)(?=(\\s|\\)|\\]|\\}))"
         name: "entity.name.function.core.janet"
     function:
+        match: "(?<=\\()(.+?)(?=\\s|\\))"
+        captures:
+          "1":
+            name: "entity.name.function.call.janet"
+    "function-call":
+        begin: "(?<=[\\(defn|\\(defn\\-|\\(fn])(?<![\\(def|\\(def-])\\s([a-zA-Z0-9\\#\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+)(?=\\s|[\\s\\[])"
+        captures:
+            "1":
+                name: "entity.name.function.def.janet"
+        end: "(?=\\s|\\(|\\[|\\)|\\])"
         patterns: [
             {
-                match: "(?<=\\()(.+?)(?=\\s|\\))"
-                captures:
-                  "1":
-                    name: "entity.name.function.call.janet"
+                include: "#all"
             }
-            # {
-            #     # Try to tokenize function definitions
-            #     match: "(?<=\\())(defn|defn-|fn)\\s(.+?)\\s(\\[)(.*?)(?=\\s|\\])(?=\\s|\\))"
-            #     captures:
-            #         "3":
-            #             name: "entity.name.function.def.janet"
-            #         "5":
-            #             name: "entity.name.param.janet"
-            # }
         ]
     keysym:
         match: "(?<![\\.:\\w_\\-=!@\\$%^&?|\\\\/<>*]):[\\.:\\w_\\-=!@\\$%^&?|\\\\/<>*]*"
