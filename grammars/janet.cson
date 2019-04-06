@@ -83,7 +83,7 @@ repository:
                 include: "#all"
             }
         ]
-    # brackets:
+    brackets:
         begin: "(@?\\[)"
         captures:
             "1":
@@ -148,6 +148,18 @@ repository:
                 include: "#all"
             }
         ]
+    # parameters:
+    #     # begin: "(?<=[\\(defn\\s(.+?)(?=\\s)|\\(defn\\-\\s(.+?)(?=\\s)|\\(fn\\s(.+?)(?=\\s)])(?<![\\(def|\\(def-])(.+?)"
+    #     begin: "(?<=[defn\\s(.+?)\\s\\[|fn\\s(.*?)\\s\\[])(.+?)"
+    #     captures:
+    #         "1":
+    #             name: "entity.name.param.janet"
+    #     end: "(?=\\])"
+    #     patterns: [
+    #         {
+    #             include: "#all"
+    #         }
+    #     ]
     keysym:
         match: "(?<![\\.:\\w_\\-=!@\\$%^&?|\\\\/<>*]):[\\.:\\w_\\-=!@\\$%^&?|\\\\/<>*]*"
         name: "constant.keyword.janet"
