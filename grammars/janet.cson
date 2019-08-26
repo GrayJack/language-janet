@@ -115,10 +115,10 @@ repository:
         match: "[\\'\\~\\;\\,]"
         name: "punctuation.other.janet"
     shortfn:
-        match: "(?<=(\\s|\\(|\\[|\\{))(\\|)(?=(\\s|\\)|\\]|\\}))"
+        match: "(\\|)"
         name: "keyword.control.shortfn.janet"
     shortfnvar:
-        match: "(?<=(\\s|\\(|\\[|\\{))(\\$[[:alnum:]]*)(?=(\\s|\\)|\\]|\\}))"
+        match: "(\\$[[:alnum:]]*)"
         name: "storage.control.shortfn.janet"
     keyfn:
         patterns: [
