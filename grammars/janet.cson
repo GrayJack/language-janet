@@ -119,6 +119,7 @@ repository:
         name: "keyword.control.shortfn.janet"
     shortfnvar:
         match: "(?<=(\\s|\\(|\\[|\\{))(\\$[[:alnum:]]*)(?=(\\s|\\)|\\]|\\}))"
+        name: "storage.control.shortfn.janet"
     keyfn:
         patterns: [
             {
