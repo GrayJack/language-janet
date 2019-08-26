@@ -48,6 +48,12 @@ repository:
                 include: "#function"
             }
             {
+                include: "#shortfn"
+            }
+            {
+                include: "#shortfnvar"
+            }
+            {
                 include: "#r-number"
             }
             {
