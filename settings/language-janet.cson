@@ -1,5 +1,18 @@
-'.source.janet':
+'.source.carp':
   'editor':
-    'commentStart': '# '
+    'autoIndentOnPaste': false
+    'commentStart': '; '
+    'tabLength': 4
+    'softTabs': true
+    'preferredLineLength': 80
   'autocomplete':
     'extraWordCharacters': '-'
+  'bracket-matcher':
+     autocompleteCharacters: [
+       '()'
+       '[]'
+       '{}'
+       '\'\''
+       '""'
+       '``'
+     ]
