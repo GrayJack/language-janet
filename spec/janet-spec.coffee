@@ -100,7 +100,7 @@
     expect(tokens[5]).toEqual value: ":bar", scopes: ["source.janet", "meta.expression.janet", "meta.definition.global.janet", "constant.keyword.janet"]
 
   it "tokenizes keyfns (keyword control)", ->
-    keyfns = ["import", "require", "def", "def-", "defglobal", "var", "varglobal", "defn", "defn-", "defmacro", "defmacro-"]
+    keyfns = ["import", "require", "def", "def-", "defglobal", "var", "varglobal", "defn", "defn-", "defmacro", "defmacro-" "use"]
 
     for keyfn in keyfns
       {tokens} = grammar.tokenizeLine "(#{keyfn})"
