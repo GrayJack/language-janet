@@ -1,7 +1,7 @@
-'.source.carp':
+'.source.janet':
   'editor':
     'autoIndentOnPaste': false
-    'commentStart': '; '
+    'commentStart': '#'
     'tabLength': 4
     'softTabs': true
     'preferredLineLength': 80
