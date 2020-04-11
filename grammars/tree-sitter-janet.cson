@@ -89,3 +89,4 @@ scopes:
     'bool_literal' : 'constant.language.boolean'
     'number_literal': 'constant.number'
     'nil_literal' : 'constant.language.nil'
+    'escape_sequence' : 'constant.character.escape'
