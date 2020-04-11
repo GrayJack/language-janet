@@ -29,13 +29,11 @@ scopes:
     ''' : 'entity.name.function.def'
 
     '''
-        tuple > symbol:nth-child(0),
-        tuple > scoped_symbol > symbol:nth-child(0),
-        tuple > scoped_symbol > scoped_symbol > symbol:nth-child(0),
-        tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol:nth-child(0),
-    ''' : {
-        'entity.name.function.call'
-    }
+        tuple > symbol:nth-child(1),
+        tuple > scoped_symbol > symbol:nth-child(1),
+        tuple > scoped_symbol > scoped_symbol > symbol:nth-child(1),
+        tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol:nth-child(1),
+    ''' : 'entity.name.function.call'
 
     'parameters > symbol' : 'entity.name.variable.parameter'
 
@@ -74,6 +72,8 @@ scopes:
     'short_quasiquote > "~"' : 'support.shorthand.quasiquote'
     'short_unquote > ","' : 'support.shorthand.unquote'
     'short_fn > "|"' : 'support.shorthand.fn'
+
+    'doc_str' : 'string.quoted.double.doc-str'
 
     '''
         str_literal,
