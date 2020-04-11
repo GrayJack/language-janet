@@ -1,0 +1,87 @@
+name: 'Janet'
+scopeName: 'source.janet'
+type: 'tree-sitter'
+parser: 'tree-sitter-janet'
+
+fileTypes: [
+  'janet'
+]
+
+comments:
+  start: '# '
+
+folds: [
+
+]
+
+scopes:
+    'source_file': 'source.janet'
+
+    'line_comment' : 'comment.line'
+
+    'module_symbol' : 'support.module'
+
+    '''
+        fn > symbol,
+        fn > scoped_symbol > symbol,
+        extra_defs > symbol,
+        extra_defs > scoped_symbol > symbol,
+    ''' : 'entity.name.function.def'
+
+    '''
+        tuple > symbol:nth-child(0),
+        tuple > scoped_symbol > symbol:nth-child(0),
+        tuple > scoped_symbol > scoped_symbol > symbol:nth-child(0),
+        tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol:nth-child(0),
+    ''' : {
+        'entity.name.function.call'
+    }
+
+    'parameters > symbol' : 'entity.name.variable.parameter'
+
+    '''
+        symbol,
+        scoped_symbol > symbol,
+    ''' : [
+        {match: '^[A-Z\\d_]{2,}$', scopes: 'constant.other'},
+    ]
+
+    'keyword' : 'support.variable.contant.key'
+    'mod_keyword' : 'support.variable.contant.modkey'
+
+    '"def"' : 'storage.modifier.def'
+    '"var"' : 'storage.modifier.var'
+    '"set"' : 'storage.modifier.set'
+    '"defn"' : 'storage.modifier.defn'
+    '"defn-"' : 'storage.modifier.defn-'
+    '"varfn"' : 'storage.modifier.varfn'
+    '"varfn-"' : 'storage.modifier.varfn-'
+    '"defmacro"' : 'storage.modifier.defmacro'
+    '"defmacro-"' : 'storage.modifier.defmacro-'
+
+    '"do"' : 'keyword.control.do'
+    '"if"' : 'keyword.control.if'
+    '"fn"' : 'keyword.control.fn'
+    '"break"' : 'keyword.control.break'
+    '"quote"' : 'keyword.control.quote'
+    '"while"' : 'keyword.control.while'
+    '"splice"' : 'keyword.control.splice'
+    '"unquote"' : 'keyword.control.unquote'
+    '"quasiquote"' : 'keyword.control.quasiquote'
+
+    'short_quote > "\'"' : 'support.shorthand.quote'
+    'short_splice > ";"' : 'support.shorthand.splice'
+    'short_quasiquote > "~"' : 'support.shorthand.quasiquote'
+    'short_unquote > ","' : 'support.shorthand.unquote'
+    'short_fn > "|"' : 'support.shorthand.fn'
+
+    '''
+        str_literal,
+        long_str_literal,
+        buffer_literal,
+        long_buffer_literal,
+    ''' : 'string.quoted.double'
+
+    'bool_literal' : 'constant.language.boolean'
+    'number_literal': 'constant.number'
+    'nil_literal' : 'constant.language.nil'

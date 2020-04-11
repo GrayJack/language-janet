@@ -1,21 +1,22 @@
 ## Unreleased
- * Added break as special form
- * Added unless highlight as "keyword" color since when if in it too
+ * Add wip tree-sitter syntax
+ * Add break as special form
+ * Add unless highlight as "keyword" color since when if in it too
 
 ## 1.2.0
- * Added generate snippet
- * Added case snippet
- * Added match snippet
- * Added seq snippet
- * Added unless snippet
- * Fixed shebang snippet
+ * Add generate snippet
+ * Add case snippet
+ * Add match snippet
+ * Add seq snippet
+ * Add unless snippet
+ * Fix shebang snippet
 
 ## 1.1.2
  * Fix a bug in the snippets
 
 ## 1.1.0
- * Added pretty print snippet
- * Added shebang snippet
+ * Add pretty print snippet
+ * Add shebang snippet
  * Fix try snippet
  * Tokenize radix number literals
  * Table and arrays highlight

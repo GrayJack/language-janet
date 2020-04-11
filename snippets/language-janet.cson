@@ -62,6 +62,22 @@
       \t${3:body})
     """
 
+  'varfn':
+     'prefix': 'varfn'
+     'body': """
+       (varfn ${1:name}
+       \t[${2:params}]
+       \t${3:body})
+     """
+
+   'varfn-':
+     'prefix': 'varfn-'
+     'body': """
+       (varfn- ${1:name}
+       \t[${2:params}]
+       \t${3:body})
+     """
+
   'fn':
     'prefix': 'fn'
     'body': """
@@ -87,6 +103,14 @@
     """
 
   # Conditionals
+  'do':
+    'prefix': 'do'
+    'body': """
+      (do
+      \t${1:expr}
+      \t${2:other})
+    """
+
   'if':
     'prefix': 'if'
     'body': """
@@ -202,7 +226,7 @@
   'for':
     'prefix': 'for'
     'body': """
-      (for [${1:binding}] ${2:start} ${3:end}
+      (for [${1:binding}] ${2:start} ${3:end}]
       \t${4:body})
     """
 
