@@ -30,10 +30,14 @@ scopes:
 
     '''
         tuple > symbol:nth-child(1),
-        tuple > scoped_symbol > symbol:nth-child(1),
-        tuple > scoped_symbol > scoped_symbol > symbol:nth-child(1),
-        tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol:nth-child(1),
-    ''' : 'entity.name.function.call'
+        tuple > scoped_symbol > symbol,
+        tuple > scoped_symbol > scoped_symbol > symbol,
+        tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol,
+    ''' : [
+        {match: '^(let|import|require|defglobal|varglobal|when|unless|cond|case|match|for|loop|try)$' , scopes: 'keyword.control.other'},
+        {match: '^(%|%=|\\*|\\*=|\\+|\\+\\+|\\+=|-|--|-=|->|->>|-\\?>|-\\?>>|\\/|\\/=|<|<=|=|>|>=)$', scopes: 'keyword.operator'},
+        'entity.name.function.call'
+    ]
 
     'parameters > symbol' : 'entity.name.variable.parameter'
 
