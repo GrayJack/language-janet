@@ -34,7 +34,7 @@ scopes:
         tuple > scoped_symbol > scoped_symbol > symbol,
         tuple > scoped_symbol > scoped_symbol > scoped_symbol > symbol,
     ''' : [
-        {match: '^\\$.*$', scopes: 'entity.name.variable.parameter.shortfnvar'},
+        {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
         {match: '^(let|import|require|defglobal|varglobal|when|unless|cond|case|match|for|loop|try)$' , scopes: 'keyword.control.other'},
         {match: '^(%|%=|\\*|\\*=|\\+|\\+\\+|\\+=|-|--|-=|->|->>|-\\?>|-\\?>>|\\/|\\/=|<|<=|=|>|>=)$', scopes: 'keyword.operator'},
         'entity.name.function.call'
@@ -46,7 +46,7 @@ scopes:
         symbol,
         scoped_symbol > symbol,
     ''' : [
-        {match: '^\\$.*$', scopes: 'entity.name.variable.parameter.shortfnvar'},
+        {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
         {match: '^[A-Z\\d_]{2,}$', scopes: 'constant.other'},
     ]
 
