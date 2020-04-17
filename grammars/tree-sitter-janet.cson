@@ -11,7 +11,18 @@ comments:
   start: '# '
 
 folds: [
-
+  {
+    start: {index: 0, type: '{'}
+    end: {index: -1, type: '}'}
+  }
+  {
+    start: {index: 0, type: '['}
+    end: {index: -1, type: ']'}
+  }
+  {
+    start: {index: 0, type: '('}
+    end: {index: -1, type: ')'}
+  }
 ]
 
 scopes:
@@ -19,20 +30,14 @@ scopes:
 
     'line_comment' : 'comment.line'
 
-    'module_symbol' : 'support.module'
-
     '''
         fn > symbol,
         fn > scoped_symbol > symbol,
         extra_defs > symbol,
-        extra_defs > scoped_symbol > symbol,
     ''' : 'entity.name.function.def'
 
     '''
         tuple > symbol:nth-child(1),
-        tuple > scoped_symbol:nth-child(1) > symbol,
-        tuple > scoped_symbol:nth-child(1) > scoped_symbol > symbol,
-        tuple > scoped_symbol:nth-child(1) > scoped_symbol > scoped_symbol > symbol,
     ''' : [
         {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
         {match: '^(let|import|require|defglobal|varglobal|when|unless|cond|case|match|for|loop|try)$' , scopes: 'keyword.control.other'},
@@ -40,11 +45,25 @@ scopes:
         'entity.name.function.call'
     ]
 
-    'parameters > symbol' : 'entity.name.variable.parameter'
+    '''
+        parameters > symbol,
+        parameters > tuple > symbol,
+        parameters > array > symbol,
+        parameters > sqr_array > symbol,
+        parametars > sqr_tuple > symbol,
+        parameters > struct > symbol,
+        parameters > table > symbol,
+        tuple_parameters > symbol,
+        tuple_parameters > tuple > symbol,
+        tuple_parameters > array > symbol,
+        tuple_parameters > sqr_array > symbol,
+        tuple_parameters > sqr_tuple > symbol,
+        tuple_parameters > struct > symbol,
+        tuple_parameters > table > symbol,
+    ''' : 'entity.name.variable.parameter'
 
     '''
         symbol,
-        scoped_symbol > symbol,
     ''' : [
         {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
         {match: '^[A-Z\\d_]{2,}$', scopes: 'constant.other'},
@@ -79,8 +98,6 @@ scopes:
     'short_unquote > ","' : 'support.shorthand.unquote'
     'short_fn > "|"' : 'support.shorthand.fn'
 
-    'doc_str' : 'string.quoted.double.doc-str'
-
     '''
         str_literal,
         long_str_literal,
@@ -88,7 +105,9 @@ scopes:
         long_buffer_literal,
     ''' : 'string.quoted.double'
 
+    'doc_str' : 'string.quoted.double.doc-str'
+
     'bool_literal' : 'constant.language.boolean'
     'number_literal': 'constant.number'
     'nil_literal' : 'constant.language.nil'
-    'escape_sequence' : 'constant.character.escape'
+    # 'escape_sequence' : 'constant.character.escape'
