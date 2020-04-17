@@ -50,7 +50,7 @@ scopes:
         parameters > tuple > symbol,
         parameters > array > symbol,
         parameters > sqr_array > symbol,
-        parametars > sqr_tuple > symbol,
+        parameters > sqr_tuple > symbol,
         parameters > struct > symbol,
         parameters > table > symbol,
         tuple_parameters > symbol,
