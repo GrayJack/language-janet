@@ -37,7 +37,7 @@ scopes:
     ''' : 'entity.name.function.def'
 
     '''
-        peg_set > "set"
+        peg_set > "set",
         tuple > symbol:nth-child(1),
     ''' : [
         {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
