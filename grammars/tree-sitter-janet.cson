@@ -37,6 +37,7 @@ scopes:
     ''' : 'entity.name.function.def'
 
     '''
+        peg_set > "set"
         tuple > symbol:nth-child(1),
     ''' : [
         {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
@@ -74,7 +75,7 @@ scopes:
 
     '"def"' : 'storage.modifier.def'
     '"var"' : 'storage.modifier.var'
-    '"set"' : 'storage.modifier.set'
+    'set > "set"' : 'storage.modifier.set'
     '"defn"' : 'storage.modifier.defn'
     '"defn-"' : 'storage.modifier.defn-'
     '"varfn"' : 'storage.modifier.varfn'
