@@ -93,6 +93,16 @@ scopes:
     '"unquote"' : 'keyword.control.unquote'
     '"quasiquote"' : 'keyword.control.quasiquote'
 
+    '"("': 'punctuation.definition.parameters.begin.bracket.round'
+    '"@("': 'punctuation.definition.parameters.begin.bracket.round'
+    '")"': 'punctuation.definition.parameters.end.bracket.round'
+    '"{"': 'punctuation.definition.function.body.begin.bracket.curly'
+    '"@{"': 'punctuation.definition.function.body.begin.bracket.curly'
+    '"}"': 'punctuation.definition.function.body.end.bracket.curly'
+    '"["': 'punctuation.definition.array.begin.bracket.square'
+    '"@["': 'punctuation.definition.array.begin.bracket.square'
+    '"]"': 'punctuation.definition.array.end.bracket.square'
+
     'short_quote > "\'"' : 'support.shorthand.quote'
     'short_splice > ";"' : 'support.shorthand.splice'
     'short_quasiquote > "~"' : 'support.shorthand.quasiquote'
