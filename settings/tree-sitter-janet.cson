@@ -2,7 +2,7 @@
   'editor':
     'autoIndentOnPaste': false
     'commentStart': '# '
-    'tabLength': 4
+    'tabLength': 2
     'softTabs': true
     'preferredLineLength': 80
   'autocomplete':
