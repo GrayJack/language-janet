@@ -5,6 +5,7 @@ parser: 'tree-sitter-janet'
 
 fileTypes: [
   'janet'
+  'jpm'
 ]
 
 comments:
