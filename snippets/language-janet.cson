@@ -1,102 +1,102 @@
 '.source.janet':
   # Shebang
   'shebang':
-    'prefix': 'shebang'
-    'body': '#!/bin/env janet'
+    prefix: 'shebang'
+    body: '#!/bin/env janet'
 
   # Library loading
   'import':
-    'prefix': 'import'
-    'body': '(import ${1:path} ${2:args})'
+    prefix: 'import'
+    body: '(import ${1:path} ${2:args})'
 
   'require':
-    'prefix': 'req'
-    'body': '(require ${1:path} ${2:args})'
+    prefix: 'req'
+    body: '(require ${1:path} ${2:args})'
 
   # Variable bindings
   'def':
-    'prefix': 'def'
-    'body': '(def ${1:symbol} ${2:value})'
+    prefix: 'def'
+    body: '(def ${1:symbol} ${2:value})'
 
   'def-':
-    'prefix': 'def-'
-    'body': '(def- ${1:symbol} ${2:value})'
+    prefix: 'def-'
+    body: '(def- ${1:symbol} ${2:value})'
 
   'defglobal':
-    'prefix': 'defg'
-    'body': '(defglobal ${1:symbol} ${2:value})'
+    prefix: 'defg'
+    body: '(defglobal ${1:symbol} ${2:value})'
 
   'var':
-    'prefix': 'var'
-    'body': '(var ${1:symbol} ${2:value})'
+    prefix: 'var'
+    body: '(var ${1:symbol} ${2:value})'
 
   'varglobal':
-    'prefix': 'varg'
-    'body': '(varglobal ${1:symbol} ${2:value})'
+    prefix: 'varg'
+    body: '(varglobal ${1:symbol} ${2:value})'
 
   'set':
-    'prefix': 'set'
-    'body': '(set ${1:var} ${2:value})'
+    prefix: 'set'
+    body: '(set ${1:var} ${2:value})'
 
   'let':
-    'prefix': 'let'
-    'body': """
+    prefix: 'let'
+    body: """
       (let [${1:bindings}]
       \t${2:body})
     """
 
   # Function bindings
   'defn':
-    'prefix': 'defn'
-    'body': """
+    prefix: 'defn'
+    body: """
       (defn ${1:name}
       \t[${2:params}]
       \t${3:body})
     """
 
   'defn-':
-    'prefix': 'defn-'
-    'body': """
+    prefix: 'defn-'
+    body: """
       (defn- ${1:name}
       \t[${2:params}]
       \t${3:body})
     """
 
   'varfn':
-     'prefix': 'varfn'
-     'body': """
+     prefix: 'varfn'
+     body: """
        (varfn ${1:name}
        \t[${2:params}]
        \t${3:body})
      """
 
    'varfn-':
-     'prefix': 'varfn-'
-     'body': """
+     prefix: 'varfn-'
+     body: """
        (varfn- ${1:name}
        \t[${2:params}]
        \t${3:body})
      """
 
   'fn':
-    'prefix': 'fn'
-    'body': """
+    prefix: 'fn'
+    body: """
       (fn [${1:params}]
       \t${2:body})$0
     """
 
   # Macro bindings
   'macro':
-    'prefix': 'macro'
-    'body': """
+    prefix: 'macro'
+    body: """
       (defmacro ${1:name}
       \t[${2:params}]
       \t${3:more})
     """
 
   'macro-':
-    'prefix': 'macro-'
-    'body': """
+    prefix: 'macro-'
+    body: """
       (defmacro- ${1:name}
       \t[${2:params}]
       \t${3:more})
@@ -104,84 +104,84 @@
 
   # Conditionals
   'do':
-    'prefix': 'do'
-    'body': """
+    prefix: 'do'
+    body: """
       (do
       \t${1:expr}
       \t${2:other})
     """
 
   'if':
-    'prefix': 'if'
-    'body': """
+    prefix: 'if'
+    body: """
       (if ${1:bool}
       \t${2:then}
       \t${3:else})
     """
 
   'if-let':
-    'prefix': 'ifl'
-    'body': """
+    prefix: 'ifl'
+    body: """
       (if-let [${1:bindings}]
       \t${2:then}
       \t${3:else})
     """
 
   'if-not':
-    'prefix': 'ifn'
-    'body': """
+    prefix: 'ifn'
+    body: """
       (if-not ${1:bool}
       \t${2:then}
       \t${3:else})
     """
 
   'when':
-    'prefix': 'when'
-    'body': """
+    prefix: 'when'
+    body: """
       (when ${1:bool}
       \t${2:body})
     """
 
   'when-let':
-    'prefix': 'whenl'
-    'body': """
+    prefix: 'whenl'
+    body: """
       (when-let [${1:bindings}]
       \t${2:body})
     """
 
   'when-not':
-    'prefix': 'whenn'
-    'body': """
+    prefix: 'whenn'
+    body: """
       (when-not ${1:bool}
       \t${2:body})
     """
 
   'unless':
-    'prefix': 'unless'
-    'body': """
+    prefix: 'unless'
+    body: """
       (unless ${1:bool}
       \t${2:body})
     """
 
   'cond':
-    'prefix': 'cond'
-    'body': """
+    prefix: 'cond'
+    body: """
       (cond
       \t${1:bool} ${2:expr}
       \t$0)
     """
 
   'case':
-    'prefix': 'case'
-    'body': """
+    prefix: 'case'
+    body: """
       (case ${1:dispatch}
       \t${2:bool} ${3:expr}
       \t$0)
     """
 
   'match':
-    'prefix': 'match'
-    'body': """
+    prefix: 'match'
+    body: """
       (match ${1:x}
       \t${2:cases}
       \t$0)
@@ -189,96 +189,103 @@
 
   # Functional paradigm functions
   'filter':
-    'prefix': 'filter'
-    'body': '(filter ${1:bool} ${2:indexed})'
+    prefix: 'filter'
+    body: '(filter ${1:bool} ${2:indexed})'
 
   'some':
-    'prefix': 'some'
-    'body': '(some ${1:bool} ${2:indexed})'
+    prefix: 'some'
+    body: '(some ${1:bool} ${2:indexed})'
 
   'map':
-    'prefix': 'map'
-    'body': '(map ${1:function} ${2:indexed})'
+    prefix: 'map'
+    body: '(map ${1:function} ${2:indexed})'
 
   'reduce':
-    'prefix': 'reduce'
-    'body': '(reduce ${1:function} ${2:init} ${3:indexed})'
+    prefix: 'reduce'
+    body: '(reduce ${1:function} ${2:init} ${3:indexed})'
 
   'fold':
-    'prefix': 'fold'
-    'body': '(reduce ${1:function} ${2:init} ${3:indexed})'
+    prefix: 'fold'
+    body: '(reduce ${1:function} ${2:init} ${3:indexed})'
 
   # Iterator and Imperative Loops
   'while':
-    'prefix': 'while'
-    'body': """
+    prefix: 'while'
+    body: """
       (while ${1:bool}
       \t${2:body})
     """
 
   'each':
-    'prefix': 'each'
-    'body': """
+    prefix: 'each'
+    body: """
       (each ${1:bind} ${2:indexed}
       \t${3:body})
     """
 
   'for':
-    'prefix': 'for'
-    'body': """
+    prefix: 'for'
+    body: """
       (for [${1:binding}] ${2:start} ${3:end}]
       \t${4:body})
     """
 
   'loop':
-    'prefix': 'loop'
-    'body': """
+    prefix: 'loop'
+    body: """
       (loop [${1:head}]
       \t${2:body})
     """
 
   'seq':
-    'prefix': 'seq'
-    'body': """
+    prefix: 'seq'
+    body: """
       (seq [${1:head}]
       \t${2:body})
     """
 
   'generate':
-    'prefix': 'gen'
-    'body': """
+    prefix: 'gen'
+    body: """
       (generate [${1:head}]
       \t${2:body})
     """
 
   'try':
-    'prefix': 'try'
-    'body': """
+    prefix: 'try'
+    body: """
       (try
       \t$1
       ([${2:exception}]
       \t$3))
     """
 
+  'main':
+    prefix: 'main'
+    body: """
+      (defn main [& args]
+      \t${1:body})
+    """
+
   # File ops
   'slurp':
-    'prefix': 'slurp'
-    'body': '(slurp ${1:path})'
+    prefix: 'slurp'
+    body: '(slurp ${1:path})'
 
   # Data structure functions
   'length':
-    'prefix': 'len'
-    'body': '(length ${1:data_structure})'
+    prefix: 'len'
+    body: '(length ${1:data_structure})'
 
   'put':
-    'prefix': 'put'
-    'body': '(put ${1:data_structure} ${2:key} ${3:value})'
+    prefix: 'put'
+    body: '(put ${1:data_structure} ${2:key} ${3:value})'
 
   # Prints
   'print':
-    'prefix': 'print'
-    'body': '(print $1)'
+    prefix: 'print'
+    body: '(print $1)'
 
   'pretty-print':
-    'prefix': 'pp'
-    'body': '(pp $1)'
+    prefix: 'pp'
+    body: '(pp $1)'
