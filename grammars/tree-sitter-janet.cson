@@ -109,6 +109,9 @@ scopes:
     'short_quasiquote > "~"' : 'support.shorthand.quasiquote'
     'short_unquote > ","' : 'support.shorthand.unquote'
     'short_fn > "|"' : 'support.shorthand.fn'
+    'variadic_marker' : 'support.parameter.marker.variadic'
+    'optional_marker' : 'support.parameter.marker.optional'
+    'keys_marker' : 'support.parameter.marker.keys'
 
     '''
         str_literal,
