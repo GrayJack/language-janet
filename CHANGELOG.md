@@ -3,6 +3,7 @@
 -   Add wip tree-sitter syntax
 -   Add break as special form
 -   Add unless highlight as "keyword" color since when if in it too
+-
 
 ## 1.2.0
 
