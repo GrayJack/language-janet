@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 3.1.0
+
 -   Add wip tree-sitter syntax
 -   Add break as special form
 -   Add unless highlight as "keyword" color since when if in it too
