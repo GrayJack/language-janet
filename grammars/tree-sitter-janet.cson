@@ -42,8 +42,9 @@ scopes:
         tuple > symbol:nth-child(1),
     ''' : [
         {match: '^\\$.*$', scopes: 'entity.name.variable.shortfnvar'},
-        {match: '^(let|import|require|defglobal|varglobal|when|unless|cond|case|match|for|loop|try)$' , scopes: 'keyword.control.other'},
+        {match: '^(require|defglobal|varglobal)$' , scopes: 'keyword.control.other'},
         {match: '^(%|%=|\\*|\\*=|\\+|\\+\\+|\\+=|-|--|-=|->|->>|-\\?>|-\\?>>|\\/|\\/=|<|<=|=|>|>=)$', scopes: 'keyword.operator'},
+        {match: '(->|->>|-\\?>|-\\?>>|and|as->|as-macro|as\\?->|case|chr|comment|compif|comptime|compwhen|cond|coro|default|defer|doc|each|eachk|eachp|edefer|ev\\/do-thread|ev\\/gather|ev\\/spawn|ev\\/with-deadline|for|forever|forv|generate|if-let|if-not|if-with|import|juxt|label|let|loop|match|or|prompt|protect|repeat|seq|tracev|try|unless|use|when|when-let|when-with|with|with-dyns|with-syms|with-vars)', scopes: 'entity.name.macro.call'},
         'entity.name.function.call'
     ]
 
