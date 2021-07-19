@@ -16,9 +16,9 @@
     "url": "https://github.com/GrayJack/language-janet/issues"
   },
   "dependencies": {
-    "tree-sitter-janet": "0.5.0-atom"
+    "tree-sitter-janet": "0.5.1-atom"
   },
   "devDependencies": {
-    "coffeelint": "^1.10.1"
+    "coffeelint": "^1.4.1"
   }
 }
